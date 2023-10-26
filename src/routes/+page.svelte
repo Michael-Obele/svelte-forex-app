@@ -11,7 +11,7 @@
 		channel.publish('update', { Time: Date.now().toString() });
 	}, 3000);
 
-	let sub = channASXel.subscribe((msg) => {
+	let sub = channel.subscribe((msg) => {
 		time = JSON.stringify(msg.data);
 	});
 </script>
