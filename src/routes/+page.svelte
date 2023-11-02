@@ -23,10 +23,6 @@
 	});
 </script>
 
-<svelte:head>
-	<script src="https://cdn.ably.com/lib/ably.min-1.js"></script>
-</svelte:head>
-
 <h1>Welcome to SvelteKit</h1>
 
 <h3>{time}</h3>
