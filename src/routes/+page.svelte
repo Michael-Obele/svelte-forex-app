@@ -1,19 +1,25 @@
 <script>
 	//@ts-nocheck
-	let apiKey = 'pmPj8A.10JMLQ:kVdYpkwf-_c_2SEftDg9IJlFw1SblYaw5DTAd8G3zCw';
-	const ably = new Ably.Realtime.Promise({ key: apiKey });
-	console.log('apiKey = ', apiKey);
+	import { onMount } from 'svelte';
 
-	let time = 'Sjwejw';
+	let i = 'Hey';
+	let time = 'Sometime';
 
-	let channel = ably.channels.get('time');
+	let channel;
+	let sub;
 
-	setInterval(() => {
-		channel.publish('update', { Time: Date.now() });
-	}, 3000);
+	onMount(() => {
+		const apiKey = 'pmPj8A.10JMLQ:kVdYpkwf-_c_2SEftDg9IJlFw1SblYaw5DTAd8G3zCw';
+		const ably = new Ably.Realtime.Promise({ key: apiKey });
+		channel = ably.channels.get('time');
 
-	let sub = channel.subscribe((msg) => {
-		time = JSON.stringify(msg.data);
+		setInterval(() => {
+			channel.publish('update', { Time: Date.now().toString() });
+		}, 3000);
+
+		sub = channel.subscribe((msg) => {
+			time = JSON.stringify(msg.data);
+		});
 	});
 </script>
 
