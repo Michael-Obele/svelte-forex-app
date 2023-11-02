@@ -1,5 +1,5 @@
 <script>
-	//@ts-nocheck
+	import Ably from 'ably';
 	import { onMount } from 'svelte';
 
 	let i = 'Hey';
